@@ -6,8 +6,4 @@ class Property:
     def calculate_tax(self):
         return self.__tax
 
-    def get_price(self):
-        return self.__worth
 
-    def set_price(self, worth):
-        self.__worth = worth
