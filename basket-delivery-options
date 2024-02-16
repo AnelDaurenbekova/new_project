@@ -49,6 +49,7 @@ def program():
     elif property == 'квартира':
         tax = Apartment(property_worth).calculate_tax()
     elif property == 'дом':
+        print('дом')
         tax = CountryHouse(property_worth).calculate_tax()
     else:
         raise ValueError
