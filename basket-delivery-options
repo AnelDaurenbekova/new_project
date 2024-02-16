@@ -1,0 +1,68 @@
+class Property:
+    def __init__(self, worth):
+        self.__worth = worth
+        self.__tax = 0
+
+    def calculate_tax(self):
+        return self.__tax
+
+    def get_price(self):
+        return self.__worth
+
+    def set_price(self, worth):
+        self.__worth = worth
+
+
+class Apartment(Property):
+    def __init__(self, worth):
+        super().__init__(worth)
+        self.__tax = worth / 1000
+
+    def calculate_tax(self):
+        return self.__tax
+
+
+class Car(Property):
+    def __init__(self, worth):
+        super().__init__(worth)
+        self.__tax = worth / 200
+
+    def calculate_tax(self):
+        return self.__tax
+
+
+class CountryHouse(Property):
+    def __init__(self, worth):
+        super().__init__(worth)
+        self.__tax = worth / 500
+
+    def calculate_tax(self):
+        return self.__tax
+
+
+def program():
+    money = int(input("Введите количество ваших денег: "))
+    property = input('Налог на какой вид имущества?').lower()
+    property_worth = int(input("Введите стоимость данного имущества: "))
+    if property == 'машина':
+        tax = Car(property_worth).calculate_tax()
+    elif property == 'квартира':
+        tax = Apartment(property_worth).calculate_tax()
+    elif property == 'дом':
+        tax = CountryHouse(property_worth).calculate_tax()
+    else:
+        raise ValueError
+
+    if money >= tax:
+        print("У вас достаточно денег.")
+    else:
+        print(f"Налог на имущество: {tax}")
+        missing_money = tax - money
+        print(f"Вам не хватает денег: {missing_money}")
+
+    return tax
+
+
+print(program())
+
+
